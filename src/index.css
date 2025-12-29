@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-dark text-white overflow-x-hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Archivo Black', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-10 py-4 bg-accent text-dark font-bold hover:glow-accent-strong transition-all duration-300 clip-corner;
+    min-height: 3.5rem;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-10 py-4 border-2 border-accent text-accent font-bold hover:bg-accent hover:text-dark transition-all duration-300 clip-corner;
+    min-height: 3.5rem;
+  }
+  
+  .clip-corner {
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+
+  .clip-corner-large {
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  }
+
+  .clip-corner-small {
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  }
+
+  .clip-all-corners {
+    clip-path: polygon(
+      12px 0, calc(100% - 12px) 0, 100% 12px,
+      100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%,
+      0 calc(100% - 12px), 0 12px
+    );
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent;
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+  }
+
+  .glow-accent-strong {
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.8);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.dark');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.accent');
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.primary');
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom cursor for interactive elements */
+@media (pointer: fine) {
+  .cursor-spear {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><polygon points="10,0 20,10 10,20 0,10" fill="%2300D9FF"/></svg>'), auto;
+  }
+}
+
+/* Loading animation */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Particle effect base */
+.particle {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(26, 31, 46, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Neon glow text effect */
+.neon-text {
+  text-shadow: 
+    0 0 10px rgba(0, 217, 255, 0.8),
+    0 0 20px rgba(0, 217, 255, 0.6),
+    0 0 30px rgba(0, 217, 255, 0.4);
+}
+
+/* Gradient border animation */
+@keyframes gradient-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-border {
+  background: linear-gradient(90deg, #00D9FF, #2B4C7E, #00D9FF);
+  background-size: 200% 200%;
+  animation: gradient-rotate 3s ease infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
+}
